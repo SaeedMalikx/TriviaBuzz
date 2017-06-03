@@ -1,16 +1,8 @@
 <template>
 <div>
-    <nav class="nav has-shadow">
-        <div class="container">
-            <div class="nav">
-            
-            <a class="nav-item is-tab" @click="getquestion()">Start Game</a>
-            <a class="nav-item is-tab right">SCORE: {{score}}</a>
-            
-            </div>
-        </div>
-    </nav>
-    <question></question>
+    <button class="button outline" @click="getquestion()">Start Game</button>
+    <button class="button outline">{{score}}</button>
+    <transition name="fade"><question></question></transition>
 </div>
 </template>
 
@@ -39,5 +31,23 @@ export default {
 </script>
 
 <style>
+.scorepanel{
+  height: 100px;
+  background: black;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0
+}
 
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
 </style>

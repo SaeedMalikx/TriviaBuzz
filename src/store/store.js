@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     actions: {
         nextquestion({commit}){
-            commit('markcorrect'),
+            commit('markcorrect')
             commit('getquestion')
         }
     }
