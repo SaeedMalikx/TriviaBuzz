@@ -11,17 +11,28 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         score: 0,
-        posts: []
+        posts: [],
+        diff: "easy",
+        cat: "10"
     },
     mutations: {
         getquestion (state){
-            axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
+            axios.get("https://opentdb.com/api.php?amount=1&category=" + state.cat + "&difficulty=" + state.diff + "&type=multiple")
         .then(response =>{
             state.posts = response.data;
         })},
         markcorrect (state){
             state.score++
-        }
+        },
+        changediffeasy(state){
+            state.diff="easy"
+        },
+        changediffmedium(state){
+            state.diff="medium"
+        },
+        changediffhard(state){
+            state.diff="hard"
+        },
     },
     actions: {
         nextquestion({commit}){

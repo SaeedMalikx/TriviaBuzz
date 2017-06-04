@@ -4,17 +4,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import App from './App.vue'
+import main from './components/main.vue'
 import question from './components/question.vue'
-import shop from './components/shop.vue'
+import difficulty from './components/difficulty.vue'
 
 
 
 export default new Router ({
     mode: 'history',
     routes: [
-        {path: '/',component: App},
-        {path: '/shop',component: shop},
+        {path: '/',component: main},
+        {path: '/difficulty',component: difficulty},
         {path: '/question',component: question},
     ]
 })

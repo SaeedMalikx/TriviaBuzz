@@ -1,36 +1,36 @@
 <template>
 <div>
-    <button class="button outline">{{score}}</button>
-    <router-link to="/question"><button class="button outline">Questions</button></router-link>
-    <router-link to="/shop"><button class="button outline">Shop</button></router-link>
+    <button class="button">Score:{{score}}</button>
+    <router-link to="/question"><button @click="getquestion()" class="button outline">Question</button></router-link>
+    <router-link to="/difficulty"><button class="button outline">Difficulty:{{difficulty}} </button></router-link>
     <router-view></router-view>
 </div>
 </template>
 
 <script>
-import question from './components/question.vue'
 export default {
   name: 'app',
-  components: {
-    'question': question
-  },
   data () {
     return {
     }
   },
+  methods: {
+      getquestion(){
+        this.$store.commit('getquestion')
+      },
+  },
   computed: {
     score(){
       return this.$store.state.score
+    },
+    difficulty(){
+      return this.$store.state.diff
     }
   }
 }
 </script>
 
 <style>
-.scorepanel{
-  height: 100px;
-  background: black;
-}
 .fade-enter-active, .fade-leave-active {
   transition: opacity 1s
 }
@@ -96,6 +96,9 @@ h2 {
 .btn.red {
   background-color: #e74c3c;
 }
+.btn.green {
+  background-color: #4CAF50;
+}
 
 .btn.red:hover, .btn.red:focus {
   background-color: #c0392b;
@@ -117,5 +120,4 @@ button.outline {
   color: #111111;
   border: 1.5px solid #111111;
 }
-
 </style>
