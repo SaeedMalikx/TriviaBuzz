@@ -17,7 +17,6 @@
 export default {
     updated() {
         this.sortlist()
-
     },
     methods: {
       getquestion(){

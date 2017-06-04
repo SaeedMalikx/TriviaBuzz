@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        score: 3,
+        score: 0,
         posts: []
     },
     mutations: {
