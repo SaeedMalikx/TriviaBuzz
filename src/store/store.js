@@ -13,11 +13,11 @@ export default new Vuex.Store({
         score: 0,
         posts: [],
         diff: "easy",
-        cat: "10"
+        cat: "9"
     },
     mutations: {
         getquestion (state){
-            axios.get("https://opentdb.com/api.php?amount=1&category=" + state.cat + "&difficulty=" + state.diff + "&type=multiple")
+            axios.get("https://opentdb.com/api.php?amount=1&category=" + state.cat+ "&difficulty=" + state.diff + "&type=multiple")
         .then(response =>{
             state.posts = response.data;
         })},
@@ -33,11 +33,15 @@ export default new Vuex.Store({
         changediffhard(state){
             state.diff="hard"
         },
+        changecategory(state, n){
+            state.cat=n
+        }
     },
     actions: {
         nextquestion({commit}){
             commit('markcorrect')
             commit('getquestion')
-        }
+        },
+
     }
 })

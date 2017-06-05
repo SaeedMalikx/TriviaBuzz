@@ -1,7 +1,7 @@
 <template>
 <div>
     <button class="button">Score:{{score}}</button>
-    <router-link to="/question"><button @click="getquestion()" class="button outline">Question</button></router-link>
+    <router-link to="/"><button class="button outline">Select Category</button></router-link>
     <router-link to="/difficulty"><button class="button outline">Difficulty:{{difficulty}} </button></router-link>
     <router-view></router-view>
 </div>
@@ -119,5 +119,18 @@ button.outline {
   background: none;
   color: #111111;
   border: 1.5px solid #111111;
+}
+select {
+  width: 40%;
+  height: 45px;
+  padding: 10px 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background: #F1F1F1;
+  border-radius: 2px;
+  border: 1px solid #a4a4a4;
+  font-size: 1.3rem;
+  box-sizing: border-box;
+  transition: all .2s ease;
 }
 </style>

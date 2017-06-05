@@ -5,6 +5,7 @@
         <li><button @click="changemedium()" class="btn green"><span>Medium</span></button></li>
         <li><button @click="changehard()" class="btn green"><span>Hard</span></button></li>
     </ul>
+    <router-link to="/question"><button class="button outline">Back to Question</button></router-link>
 </div>
 </template>
 
