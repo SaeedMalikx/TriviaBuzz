@@ -1,6 +1,6 @@
 <template>
 <div>
-    <button class="button">Score:{{score}}</button>
+    <button class="button outline">Score:{{score}}</button>
     <router-link to="/"><button class="button outline">Select Category</button></router-link>
     <router-link to="/difficulty"><button class="button outline">Difficulty:{{difficulty}} </button></router-link>
     <router-view></router-view>
@@ -81,16 +81,11 @@ html {
 
 body {
   margin-top: 10%;
-  background-color: #ecf0f1;
-  color: #34495e;
+  background-color: #272727;
+  color: white;
   font-family: Trebuchet, Arial, sans-serif;
   text-align: center;
 }
-
-h2 {
-  font-weight: normal;
-}
-
 
 
 .btn.red {
@@ -117,8 +112,8 @@ li {
 button.outline {
   padding: 1.1rem 3.5rem;
   background: none;
-  color: #111111;
-  border: 1.5px solid #111111;
+  color: white;
+  border: 1.5px solid white;
 }
 select {
   width: 40%;

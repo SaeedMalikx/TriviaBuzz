@@ -13,7 +13,7 @@ export default new Vuex.Store({
         score: 0,
         posts: [],
         diff: "easy",
-        cat: "9"
+        cat: 9
     },
     mutations: {
         getquestion (state){

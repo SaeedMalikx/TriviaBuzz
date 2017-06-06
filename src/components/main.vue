@@ -36,14 +36,23 @@ export default {
         cat: ""
     }
   },
+  computed: {
+      statecat(){
+          return this.$store.state.cat
+      },
+  },
   methods: {
       getquestion(){
         this.$store.commit('getquestion')
       },
       setdifficulty(){
-        this.$store.commit('changecategory', cat)  
+        this.$store.commit('changecategory', this.cat)  
       }
   },
-  
+  watch: {
+      cat(){
+        this.setdifficulty()  
+      }
+  }
 }
 </script>
