@@ -1,11 +1,13 @@
 <template>
 <div> 
-     <ul>
-        <li><button @click="changeeasy()" class="btn green"><span>Easy</span></button></li>
-        <li><button @click="changemedium()" class="btn green"><span>Medium</span></button></li>
-        <li><button @click="changehard()" class="btn green"><span>Hard</span></button></li>
-    </ul>
-    <router-link to="/question"><button class="button outline">Back to Question</button></router-link>
+    <div class="container text-center">
+        <ul class="col-sm-6 col-sm-offset-3">
+            <li @click="changeeasy()" class="btn-success btn-lg">Easy</li>
+            <li @click="changemedium()" class="btn-success btn-lg">Medium</li>
+            <li @click="changehard()" class="btn-success btn-lg">Hard</li>
+        </ul>
+    </div>
+    <router-link to="/question"><button class="btn-danger btn-lg center-block">Back to Question</button></router-link>
 </div>
 </template>
 

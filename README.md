@@ -1,4 +1,4 @@
-# vueweather
+# vuetrivia
 
 > A Vue.js project
 

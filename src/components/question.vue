@@ -1,16 +1,18 @@
 <template>
-<div >  
-    <div v-for="post in posts.results">
-        <h1>{{post.question}}</h1>
-        <ul id="menulist">
-            <li><button class="btn red" @click="markcorrect()"><span>{{post.correct_answer}}</span></button></li>
-            <li><button class="btn red"><span>{{post.incorrect_answers[0]}}</span></button></li>
-            <li><button class="btn red"><span>{{post.incorrect_answers[1]}}</span></button></li>
-            <li><button class="btn red"><span>{{post.incorrect_answers[2]}}</span></button></li>
-        </ul>
-        <button class="button outline" @click="getquestion()"> Next Question</button>
+    <div >  
+        <div class="container text-center">
+            <div v-for="post in posts.results" v-bind:key="post">
+                <h1>{{post.question}}</h1>
+                <ul id="menulist" class="col-sm-6 col-sm-offset-3">
+                    <li class="btn-info btn-lg" @click="markcorrect()">{{post.correct_answer}}</li>
+                    <li class="btn-info btn-lg">{{post.incorrect_answers[0]}}</li>
+                    <li class="btn-info btn-lg">{{post.incorrect_answers[1]}}</li>
+                    <li class="btn-info btn-lg">{{post.incorrect_answers[2]}}</li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn-danger btn-lg center-block" @click="getquestion()"> Next Question</button>
     </div>
-</div>
 </template>
 
 <script>
@@ -55,6 +57,8 @@ export default {
 </script>
 
 <style>
-
+.maincontainer{
+    margin-top: 10vh;
+}
 
 </style>

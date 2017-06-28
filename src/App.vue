@@ -1,9 +1,16 @@
 <template>
 <div>
-    <button class="button outline">Score:{{score}}</button>
-    <router-link to="/"><button class="button outline">Select Category</button></router-link>
-    <router-link to="/difficulty"><button class="button outline">Difficulty:{{difficulty}} </button></router-link>
+  <div class="navbar">
+    <div class="navcontainer">
+      <button class="btn btn-primary">Score:{{score}}</button>
+      <p class="filler"></p>
+      <router-link to="/"><button class="btn btn-primary">Select Category</button></router-link>
+      <router-link to="/difficulty"><button class="btn btn-primary">Difficulty:{{difficulty}} </button></router-link>
+    </div>
+  </div>
+  <div class="maincontainer">
     <router-view></router-view>
+  </div>
 </div>
 </template>
 
@@ -31,101 +38,44 @@ export default {
 </script>
 
 <style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s
-}
-.fade-enter, .fade-leave-to{
-  opacity: 0
-}
-
-
-.pull-right {
-  float: right;
-}
-
-.pull-left {
-  float: left;
-}
-
-button{
-  padding: 1.1rem 1.5rem;
-  margin: 1rem 0;
-  background: #111111;
-  color: #f5f5f5;
-  border-radius: 2px;
-  border: none;
-  font-size: 1.3rem;
-  transition: all .2s ease;
-}
-
-.btn:hover, .btn:focus {
-  background-color: #27ae60;
-}
-
-.btn > * {
-  position: relative;
-}
-
-.btn span {
-  display: block;
-  padding: 12px 24px;
-}
-
-
-
-
-html {
-  position: relative;
-  height: 100%;
-}
-
 body {
-  margin-top: 10%;
-  background-color: #272727;
-  color: white;
-  font-family: Trebuchet, Arial, sans-serif;
-  text-align: center;
+  background: #F09819; 
+  background: -webkit-linear-gradient(to left, #F09819 , #EDDE5D); 
+  background: linear-gradient(to left, #F09819 , #EDDE5D); 
+  background-size: cover;
 }
 
-
-.btn.red {
-  background-color: #e74c3c;
+.navbar {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: #212121;
+  top: 0;
+  width: 100%;
+  flex-wrap: wrap;
+  z-index: 5;
 }
-.btn.green {
-  background-color: #4CAF50;
+
+.filler {
+  flex-grow: 1;
+}
+.navcontainer {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  align-items: center;
 }
 
-.btn.red:hover, .btn.red:focus {
-  background-color: #c0392b;
-}
-
-ul {
+ul li {
   list-style: none;
-  margin: 0 auto;
-  padding: 0;
+  height: 10x;
+  background-color: red;
+  margin-top: 15px;
   text-align: center;
+  transition: all .5s ease;
+  cursor: pointer
 }
-li {
-    display: inline-block;
-    margin: 0 1em;
-}
-button.outline {
-  padding: 1.1rem 3.5rem;
-  background: none;
-  color: white;
-  border: 1.5px solid white;
-}
-select {
-  width: 40%;
-  height: 45px;
-  padding: 10px 10px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  background: #F1F1F1;
-  border-radius: 2px;
-  border: 1px solid #a4a4a4;
-  font-size: 1.3rem;
-  box-sizing: border-box;
-  transition: all .2s ease;
-}
+
+
+
 </style>
