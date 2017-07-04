@@ -2,12 +2,12 @@
     <div >  
         <div class="container text-center">
             <div v-for="post in posts.results" v-bind:key="post">
-                <h1>{{post.question}}</h1>
+                <h1 v-html="post.question"></h1>
                 <ul id="menulist" class="col-sm-6 col-sm-offset-3">
-                    <li class="btn-info btn-lg" @click="markcorrect()">{{post.correct_answer}}</li>
-                    <li class="btn-info btn-lg">{{post.incorrect_answers[0]}}</li>
-                    <li class="btn-info btn-lg">{{post.incorrect_answers[1]}}</li>
-                    <li class="btn-info btn-lg">{{post.incorrect_answers[2]}}</li>
+                    <li class="btn-info btn-lg" v-html="post.correct_answer" @click="markcorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[0]" ></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[1]" ></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[2]" ></li>
                 </ul>
             </div>
         </div>
@@ -60,5 +60,7 @@ export default {
 .maincontainer{
     margin-top: 10vh;
 }
-
+h1 {
+    word-wrap: break-word;
+}
 </style>

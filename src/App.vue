@@ -66,6 +66,10 @@ body {
   align-items: center;
 }
 
+.maincontainer {
+  margin-top: 10vh;
+}
+
 ul li {
   list-style: none;
   height: 10x;
@@ -76,6 +80,11 @@ ul li {
   cursor: pointer
 }
 
+@media only screen and (max-width: 500px) {
+    .navcontainer {
+        width: 100%;
+    }
+}
 
 
 </style>

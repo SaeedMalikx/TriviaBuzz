@@ -19,7 +19,7 @@ export default new Vuex.Store({
         getquestion (state){
             axios.get("https://opentdb.com/api.php?amount=1&category=" + state.cat+ "&difficulty=" + state.diff + "&type=multiple")
         .then(response =>{
-            state.posts = response.data;
+            state.posts = response.data
         })},
         markcorrect (state){
             state.score++
