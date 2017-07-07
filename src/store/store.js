@@ -11,31 +11,47 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         score: 0,
-        posts: [],
-        diff: "easy",
-        cat: 9
+        practicequestion: [],
+        timedquestion: [],
+        diff: "",
+        cat: 9,
+        countdown: 10
     },
     mutations: {
         getquestion (state){
             axios.get("https://opentdb.com/api.php?amount=1&category=" + state.cat+ "&difficulty=" + state.diff + "&type=multiple")
         .then(response =>{
-            state.posts = response.data
+            state.practicequestion = response.data
+        })},
+        gettimeattack (state){
+            axios.get("https://opentdb.com/api.php?amount=50&type=multiple")
+        .then(response =>{
+            state.timedquestion = response.data
         })},
         markcorrect (state){
-            state.score++
+            state.score +=2
         },
-        changediffeasy(state){
-            state.diff="easy"
+        markincorrect (state){
+            if (state.score > 0){
+                state.score--
+            }
         },
-        changediffmedium(state){
-            state.diff="medium"
-        },
-        changediffhard(state){
-            state.diff="hard"
+        changediff (state, diff){
+            state.diff=diff
         },
         changecategory(state, n){
             state.cat=n
+        },
+        setplayername(state, name){
+            state.playername=name
+        },
+        updatecountdown(state){
+            setInterval(() => {
+                if(state.countdown > 0)
+              state.countdown--
+            }, 1000);
         }
+        
     },
     actions: {
         nextquestion({commit}){

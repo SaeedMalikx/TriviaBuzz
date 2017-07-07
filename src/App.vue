@@ -2,10 +2,10 @@
 <div>
   <div class="navbar">
     <div class="navcontainer">
-      <button class="btn btn-primary">Score:{{score}}</button>
+      <router-link to="/"><img src="./assets/triviabuzz.png" alt=""></router-link>
       <p class="filler"></p>
-      <router-link to="/"><button class="btn btn-primary">Select Category</button></router-link>
-      <router-link to="/difficulty"><button class="btn btn-primary">Difficulty:{{difficulty}} </button></router-link>
+      <button class="btn btn-primary">{{countdown}}</button>
+      <button class="btn btn-primary">Score:{{score}}</button>
     </div>
   </div>
   <div class="maincontainer">
@@ -15,16 +15,14 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'app',
-  data () {
-    return {
-    }
-  },
   methods: {
       getquestion(){
         this.$store.commit('getquestion')
-      },
+      }
   },
   computed: {
     score(){
@@ -32,7 +30,12 @@ export default {
     },
     difficulty(){
       return this.$store.state.diff
+    },
+    countdown(){
+      return this.$store.state.countdown
     }
+    
+    
   }
 }
 </script>
@@ -44,7 +47,9 @@ body {
   background: linear-gradient(to left, #F09819 , #EDDE5D); 
   background-size: cover;
 }
-
+img {
+  width: 60%;
+}
 .navbar {
   display: flex;
   align-items: center;
@@ -83,6 +88,12 @@ ul li {
 @media only screen and (max-width: 500px) {
     .navcontainer {
         width: 100%;
+    }
+    button {
+      font-size: 50px;
+    }
+    img {
+      width: 40%;
     }
 }
 

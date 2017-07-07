@@ -27,15 +27,38 @@
                 <option value="28">Vehicles</option>
                 <option value="29">Comics</option>
             </select>
+            <br/>
+            <select v-model="diff" class="form-control">
+                <option disabled value="">Please select difficulty</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <br/>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" v-model="playername">
+                </div>
+            </form>
     </div>
 </div>
 </template>
 
 <script>
+import Firebase from 'firebase'
+
+const config = {
+  };
+Firebase.initializeApp(config);
+let firebasescore = Firebase.database().ref('scores')
+
 export default {
   data () {
     return {
-        cat: ""
+        cat: "",
+        playername: "Anonymous",
+        diff: ""
     }
   },
   computed: {
@@ -46,14 +69,30 @@ export default {
   methods: {
       getquestion(){
         this.$store.commit('getquestion')
+        this.$store.commit('updatecountdown')
+        this.sethighscore()
       },
       setdifficulty(){
         this.$store.commit('changecategory', this.cat)  
+      },
+      sethighscore(){
+          setTimeout(() => {
+            firebasescore.push({
+              'name': this.playername,
+              'score': this.$store.state.score 
+                })
+          }, 3000)
+      },
+      changediff(){
+        this.$store.commit('changediff', this.diff)
       }
   },
   watch: {
       cat(){
         this.setdifficulty()  
+      },
+      diff(){
+          this.changediff()
       }
   }
 }

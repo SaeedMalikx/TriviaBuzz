@@ -1,13 +1,13 @@
 <template>
     <div >  
         <div class="container text-center">
-            <div v-for="post in posts.results" v-bind:key="post">
-                <h1 v-html="post.question"></h1>
+            <div v-for="post in practicequestion.results" v-bind:key="post">
+                <h2 v-html="post.question"></h2>
                 <ul id="menulist" class="col-sm-6 col-sm-offset-3">
-                    <li class="btn-info btn-lg" v-html="post.correct_answer" @click="markcorrect()"></li>
-                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[0]" ></li>
-                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[1]" ></li>
-                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[2]" ></li>
+                    <li class="btn-info btn-lg" v-html="post.correct_answer" @click.once="markcorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[0]" @click="markincorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[1]" @click="markincorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[2]" @click="markincorrect()"></li>
                 </ul>
             </div>
         </div>
@@ -26,6 +26,9 @@ export default {
       },
       markcorrect(){
         this.$store.dispatch('nextquestion')
+      },
+      markincorrect(){
+          this.$store.commit('markincorrect')
       },
       sortlist(){
         var list, i, switching, b, shouldSwitch;
@@ -49,8 +52,8 @@ export default {
       }
     },
     computed: {
-        posts(){
-        return this.$store.state.posts
+        practicequestion(){
+        return this.$store.state.practicequestion
         },
     }
 }
