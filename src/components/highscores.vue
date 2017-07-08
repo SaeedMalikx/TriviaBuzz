@@ -31,21 +31,6 @@
                 </tr>
                 </tbody>
             </table>
-            <h2 class="text-center"> 50 Questions</h2>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr v-for="score in highscores50">
-                    <td>{{score.name}}</td>
-                    <td>{{score.score}}</td>
-                </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </template>
@@ -68,9 +53,6 @@ export default {
         },
         highscores30(){
             return this.$store.state.highscores30
-        },
-        highscores50(){
-            return this.$store.state.highscores50
         }
     }
 }

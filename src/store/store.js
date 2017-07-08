@@ -10,6 +10,7 @@ Vue.use(Vuex)
 
 
 const config = {
+    databaseURL: 
   };
 Firebase.initializeApp(config);
 let firebasescore = Firebase.database().ref('scores')
@@ -21,15 +22,14 @@ export default new Vuex.Store({
         timedquestion: [],
         diff: "",
         cat: 9,
-        buzzamount: 5,
+        buzzamount: 20,
         cqnumber: 0,
         playername: "Anonymous",
         highscorebutton: false,
         allowscore: true,
         highscores20: [],
         highscores30: [],
-        highscores50: [],
-        highscorecat: "thirty"
+        highscorecat: ""
     },
     mutations: {
         getquestion (state){
@@ -68,19 +68,6 @@ export default new Vuex.Store({
                       state.highscores30 = scoretransfer
                     }})
         },
-        gethighscores50(state){
-            firebasescore.child('fifty').limitToLast(15).once('value', snap => {
-                let items = snap.val();
-                let scoretransfer = [];
-                for (let item in items) {
-                      scoretransfer.push({
-                        id: item,
-                        name: items[item].name,
-                        score: items[item].score
-                      })
-                      state.highscores50 = scoretransfer
-                    }})
-        },
         markcorrect (state){
             state.score +=2
         },
@@ -106,6 +93,9 @@ export default new Vuex.Store({
                 state.allowscore = false
             }
         },
+        resethighscorebutton(state){
+            state.highscorebutton = false
+        },
         resetcq(state){
             state.cqnumber = 0
         },
@@ -119,16 +109,12 @@ export default new Vuex.Store({
         setplayername(state, name){
             state.playername = name
         },
-        sethighscorecat(state){
-            switch (state.buzzamount){
-                case 20: 
-                    state.highscorecat = "twenty"
-                case 30: 
-                    state.highscorecat = "thirty"
-                case 50: 
-                    state.highscorecat = "fifty"
-            }
-        }
+        sethighscorecat30(state){
+                state.highscorecat = "thirty"
+        },
+        sethighscorecat20(state){
+             state.highscorecat = "twenty"
+        },
         
     },
     actions: {
@@ -136,20 +122,26 @@ export default new Vuex.Store({
             commit('markcorrect')
             commit('getquestion')
         },
-        startbuzz({commit}){
+        startbuzz({commit, state}){
             commit('resetscore')
             commit('resetcq')
+            commit('resethighscorebutton')
+            if(state.buzzamount <= 20){
+                commit('sethighscorecat20')
+            }else if (state.buzzamount <= 30){
+                commit('sethighscorecat30')
+            }
         },
-        sethighscore({state}){    
+        sethighscore({state, commit}){    
             firebasescore.child(state.highscorecat).push({
               'name': state.playername,
               'score': state.score 
             })
+            commit('resetscore')
         },
         gethighscores({commit}){
             commit('gethighscores20')
             commit('gethighscores30')
-            commit('gethighscores50')
         }
 
     }
