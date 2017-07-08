@@ -8,36 +8,30 @@
                     <input type="text" class="form-control" v-model="playername">
                 </div>
             </form>
+            <br/>
             <router-link to="/question"><button @click="startbuzzround()" class="btn-danger btn-lg">Start BuzzRound</button></router-link>
     </div>
 </div>
 </template>
 <script>
-import Firebase from 'firebase'
-
-const config = {
-  };
-Firebase.initializeApp(config);
-let firebasescore = Firebase.database().ref('scores')
 
 export default {
   data () {
     return {
-        playername: "Anonymous",
+        playername: "",
     }
   },
   methods: {
       startbuzzround(){
-        this.$store.commit('updatecountdown')
-        this.sethighscore()
+        this.$store.dispatch('startbuzz')
       },
-      sethighscore(){
-          setTimeout(() => {
-            firebasescore.push({
-              'name': this.playername,
-              'score': this.$store.state.score 
-                })
-          }, 5000)
+      setplayername(){
+          this.$store.commit('setplayername', this.playername)
+      }
+  },
+  watch: {
+      playername(){
+          this.setplayername()
       }
   }
 }

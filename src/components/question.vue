@@ -11,7 +11,8 @@
                 </ul>
             </div>
         </div>
-        <button class="btn-danger btn-lg center-block" @click="getquestion()"> Next Question</button>
+        <h5 class="text-center">Question {{currentquestion}} of {{outofquestion}}</h5>
+        <router-link to="/highscores"><button v-if="this.$store.state.highscorebutton" class="btn-danger btn-lg center-block" @click="posthighscore()"> Post Highscore</button></router-link>
     </div>
 </template>
 
@@ -22,8 +23,10 @@ export default {
     },
     methods: {
       markcorrect(){
+          if(this.$store.state.allowscore){
         this.$store.commit('markcorrect')
         this.$store.commit('nextcq')
+          }
       },
       markincorrect(){
           this.$store.commit('markincorrect')
@@ -47,12 +50,21 @@ export default {
             switching = true;
         }
         }
+      },
+      posthighscore(){
+          this.$store.dispatch('sethighscore')
       }
     },
     computed: {
         timedquestion(){
-        return this.$store.state.timedquestion.results[this.$store.state.cqnumber]
+            return this.$store.state.timedquestion.results[this.$store.state.cqnumber]
         },
+        currentquestion(){
+            return this.$store.state.cqnumber+1
+        },
+        outofquestion(){
+            return this.$store.state.buzzamount
+        }
     }
 }
 </script>

@@ -2,13 +2,15 @@
 <div >
     <div class="container text-center">
             <router-link to="/questionintro"><button @click="gettimequestion()" class="btn-danger btn-lg">Start BuzzRound</button></router-link>
+            <br/>
+            <br/>
             <select v-model="buzz" class="form-control">
                 <option disabled value="">Please select # of Questions</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
                 <option value="50">50</option>
             </select>
-            <router-link to="/practicequestion"><button class="btn-danger btn-lg">Start Normal</button></router-link>
+            <br/>
             <h1>Category</h1>
             <select v-model="cat" class="form-control">
                 <option disabled value="">Please select Category</option>
@@ -42,6 +44,7 @@
                 <option value="hard">Hard</option>
             </select>
             <br/>
+            <router-link to="/practicequestion"><button class="btn-danger btn-lg">Start Normal</button></router-link>
     </div>
 </div>
 </template>

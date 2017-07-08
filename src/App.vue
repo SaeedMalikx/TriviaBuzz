@@ -4,7 +4,6 @@
     <div class="navcontainer">
       <router-link to="/"><img src="./assets/triviabuzz.png" alt=""></router-link>
       <p class="filler"></p>
-      <button class="btn btn-primary">{{countdown}}</button>
       <button class="btn btn-primary">Score:{{score}}</button>
     </div>
   </div>
