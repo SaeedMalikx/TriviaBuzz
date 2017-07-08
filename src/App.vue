@@ -84,6 +84,10 @@ ul li {
   transition: all .5s ease;
   cursor: pointer
 }
+
+li:hover, li:focus {
+    background-color: #5BC0DE !important;
+}
 @media only screen and (max-width: 500px) {
     .navcontainer {
         width: 100%;

@@ -15,7 +15,9 @@ export default new Vuex.Store({
         timedquestion: [],
         diff: "",
         cat: 9,
-        countdown: 10
+        countdown: 10,
+        buzzamount: 20,
+        cqnumber: 1
     },
     mutations: {
         getquestion (state){
@@ -24,7 +26,7 @@ export default new Vuex.Store({
             state.practicequestion = response.data
         })},
         gettimeattack (state){
-            axios.get("https://opentdb.com/api.php?amount=50&type=multiple")
+            axios.get("https://opentdb.com/api.php?amount=" + state.buzzamount +"&type=multiple")
         .then(response =>{
             state.timedquestion = response.data
         })},
@@ -50,6 +52,16 @@ export default new Vuex.Store({
                 if(state.countdown > 0)
               state.countdown--
             }, 1000);
+        },
+        nextcq(state){
+            if(state.cqnumber < 50){
+                state.cqnumber++
+            } else {
+                state.showhighscores = true
+            }
+        },
+        setbuzzamount(state, buzz){
+            state.buzzamount = buzz
         }
         
     },

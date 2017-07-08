@@ -17,21 +17,13 @@
 
 <script>
 export default {
-    data () {
-        return {
-            cqnumber: 0
-        }
-    },
     updated() {
         this.sortlist()
     },
     methods: {
-      getquestion(){
-        this.cqnumber++
-      },
       markcorrect(){
         this.$store.commit('markcorrect')
-        this.cqnumber++
+        this.$store.commit('nextcq')
       },
       markincorrect(){
           this.$store.commit('markincorrect')
@@ -59,7 +51,7 @@ export default {
     },
     computed: {
         timedquestion(){
-        return this.$store.state.timedquestion.results[this.cqnumber]
+        return this.$store.state.timedquestion.results[this.$store.state.cqnumber]
         },
     }
 }
