@@ -4,6 +4,7 @@
     <div class="navcontainer">
       <router-link to="/"><img src="./assets/triviabuzz.png" alt=""></router-link>
       <p class="filler"></p>
+      <router-link to="/highscores"><button class="btn btn-primary">Highscores</button></router-link>
       <button class="btn btn-primary">Score:{{score}}</button>
     </div>
   </div>

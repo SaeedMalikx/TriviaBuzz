@@ -10,7 +10,6 @@ Vue.use(Vuex)
 
 
 const config = {
-    databaseURL: 
   };
 Firebase.initializeApp(config);
 let firebasescore = Firebase.database().ref('scores')
@@ -52,7 +51,8 @@ export default new Vuex.Store({
                         name: items[item].name,
                         score: items[item].score
                       })
-                      state.highscores20 = scoretransfer
+                      let sortedscores = scoretransfer.sort((a, b) => Number(b.score) - Number(a.score));
+                      state.highscores20 = sortedscores
                     }})
         },
         gethighscores30(state){
@@ -65,7 +65,8 @@ export default new Vuex.Store({
                         name: items[item].name,
                         score: items[item].score
                       })
-                      state.highscores30 = scoretransfer
+                      let sortedscores = scoretransfer.sort((a, b) => Number(b.score) - Number(a.score));
+                      state.highscores30 = sortedscores
                     }})
         },
         markcorrect (state){
