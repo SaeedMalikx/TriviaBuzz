@@ -1,7 +1,8 @@
 <template>
 <div >
     <div class="container text-center">
-            <router-link to="/question"><button @click="getquestion()" class="btn-danger btn-lg">Start</button></router-link>
+            <router-link to="/questionintro"><button @click="gettimequestion()" class="btn-danger btn-lg">Start BuzzRound</button></router-link>
+            <router-link to="/practicequestion"><button class="btn-danger btn-lg">Start Normal</button></router-link>
             <h1>Category</h1>
             <select v-model="cat" class="form-control">
                 <option disabled value="">Please select Category</option>
@@ -35,29 +36,15 @@
                 <option value="hard">Hard</option>
             </select>
             <br/>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" class="form-control" v-model="playername">
-                </div>
-            </form>
     </div>
 </div>
 </template>
 
 <script>
-import Firebase from 'firebase'
-
-const config = {
-  };
-Firebase.initializeApp(config);
-let firebasescore = Firebase.database().ref('scores')
-
 export default {
   data () {
     return {
         cat: "",
-        playername: "Anonymous",
         diff: ""
     }
   },
@@ -67,21 +54,14 @@ export default {
       },
   },
   methods: {
+      gettimequestion(){
+        this.$store.commit('gettimeattack')
+      },
       getquestion(){
         this.$store.commit('getquestion')
-        this.$store.commit('updatecountdown')
-        this.sethighscore()
       },
       setdifficulty(){
         this.$store.commit('changecategory', this.cat)  
-      },
-      sethighscore(){
-          setTimeout(() => {
-            firebasescore.push({
-              'name': this.playername,
-              'score': this.$store.state.score 
-                })
-          }, 3000)
       },
       changediff(){
         this.$store.commit('changediff', this.diff)

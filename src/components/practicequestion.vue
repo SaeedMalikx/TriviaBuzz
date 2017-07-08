@@ -1,13 +1,13 @@
 <template>
     <div >  
         <div class="container text-center">
-            <div>
-                <h2 v-html="timedquestion.question"></h2>
+            <div v-for="post in practicequestion.results" v-bind:key="post">
+                <h2 v-html="post.question"></h2>
                 <ul id="menulist" class="col-sm-6 col-sm-offset-3">
-                    <li class="btn-info btn-lg" v-html="timedquestion.correct_answer" @click="markcorrect()"></li>
-                    <li class="btn-info btn-lg" v-html="timedquestion.incorrect_answers[0]" @click="markincorrect()"></li>
-                    <li class="btn-info btn-lg" v-html="timedquestion.incorrect_answers[1]" @click="markincorrect()"></li>
-                    <li class="btn-info btn-lg" v-html="timedquestion.incorrect_answers[2]" @click="markincorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.correct_answer" @click.once="markcorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[0]" @click="markincorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[1]" @click="markincorrect()"></li>
+                    <li class="btn-info btn-lg" v-html="post.incorrect_answers[2]" @click="markincorrect()"></li>
                 </ul>
             </div>
         </div>
@@ -17,21 +17,15 @@
 
 <script>
 export default {
-    data () {
-        return {
-            cqnumber: 0
-        }
-    },
     updated() {
         this.sortlist()
     },
     methods: {
       getquestion(){
-        this.cqnumber++
+        this.$store.commit('getquestion')
       },
       markcorrect(){
-        this.$store.commit('markcorrect')
-        this.cqnumber++
+        this.$store.dispatch('nextquestion')
       },
       markincorrect(){
           this.$store.commit('markincorrect')
@@ -58,18 +52,9 @@ export default {
       }
     },
     computed: {
-        timedquestion(){
-        return this.$store.state.timedquestion.results[this.cqnumber]
+        practicequestion(){
+        return this.$store.state.practicequestion
         },
     }
 }
 </script>
-
-<style>
-.maincontainer{
-    margin-top: 10vh;
-}
-h1 {
-    word-wrap: break-word;
-}
-</style>

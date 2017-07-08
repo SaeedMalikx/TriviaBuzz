@@ -84,7 +84,6 @@ ul li {
   transition: all .5s ease;
   cursor: pointer
 }
-
 @media only screen and (max-width: 500px) {
     .navcontainer {
         width: 100%;
