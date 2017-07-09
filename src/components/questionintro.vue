@@ -1,13 +1,9 @@
 <template>
 <div >
-    <div class="container text-center">
-            <h1>Every Correct Answer is 2 points, incorrect is -1 points. </h1>
-            <form class="form-inline">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" class="form-control" v-model="playername">
-                </div>
-            </form>
+    <div class="selectcontainer text-center">
+            <img class="introimg" src="../assets/score.png" alt="">
+            <br/>
+            <input type="text" class="inputform" placeholder="Enter Name for Highscore" v-model="playername">
             <br/>
             <router-link to="/question"><button @click="startbuzzround()" class="btn-danger btn-lg">Start BuzzRound</button></router-link>
     </div>
@@ -36,3 +32,26 @@ export default {
   }
 }
 </script>
+
+<style>
+.introimg {
+    width: 300px;
+    height: 150px;
+}
+
+.inputform{
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 500px) {
+    .inputform {
+        width: 80%;
+    }
+}
+</style>

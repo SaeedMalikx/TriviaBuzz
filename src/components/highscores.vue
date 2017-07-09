@@ -2,7 +2,7 @@
     <div>   
         <div class="container col-sm-6 col-sm-offset-3">
             <h2 class="text-center"> 20 Questions</h2>
-            <table class="table table-bordered">
+            <table >
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -17,7 +17,7 @@
                 </tbody>
             </table>
             <h2 class="text-center"> 30 Questions</h2>
-            <table class="table table-bordered">
+            <table>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -59,3 +59,22 @@ export default {
 
 
 </script>
+
+<style> 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr{background-color: #f2f2f2}
+
+th {
+    background-color: #8724d3;
+    color: white;
+}
+</style>

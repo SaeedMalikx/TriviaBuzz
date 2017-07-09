@@ -1,7 +1,6 @@
 <template>
 <div >
     <div class="container text-center">
-            <h1>Category</h1>
             <select v-model="cat" class="form-control">
                 <option disabled value="">Please select Category</option>
                 <option value="9">General Knowledge</option>

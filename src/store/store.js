@@ -49,7 +49,7 @@ export default new Vuex.Store({
             state.timedquestion = response.data
         })},
         gethighscores20(state){
-            firebasescore.child('twenty').limitToLast(15).once('value', snap => {
+            firebasescore.child('twenty').limitToLast(100).once('value', snap => {
                 let items = snap.val();
                 let scoretransfer = [];
                 for (let item in items) {
@@ -59,11 +59,12 @@ export default new Vuex.Store({
                         score: items[item].score
                       })
                       let sortedscores = scoretransfer.sort((a, b) => Number(b.score) - Number(a.score));
-                      state.highscores20 = sortedscores
+                      let slicedscores = sortedscores.slice(0,15)
+                      state.highscores20 = slicedscores
                     }})
         },
         gethighscores30(state){
-            firebasescore.child('thirty').limitToLast(15).once('value', snap => {
+            firebasescore.child('thirty').limitToLast(100).once('value', snap => {
                 let items = snap.val();
                 let scoretransfer = [];
                 for (let item in items) {
@@ -73,7 +74,8 @@ export default new Vuex.Store({
                         score: items[item].score
                       })
                       let sortedscores = scoretransfer.sort((a, b) => Number(b.score) - Number(a.score));
-                      state.highscores30 = sortedscores
+                      let slicedscores = sortedscores.slice(0,15)
+                      state.highscores30 = slicedscores
                     }})
         },
         markcorrect (state){
