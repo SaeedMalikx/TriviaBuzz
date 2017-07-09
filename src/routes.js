@@ -9,13 +9,15 @@ import question from './components/question.vue'
 import practicequestion from './components/practicequestion.vue'
 import questionintro from './components/questionintro.vue'
 import highscores from './components/highscores.vue'
+import select from './components/select.vue'
 
 
 
 export default new Router ({
     mode: 'history',
     routes: [
-        {path: '/',component: main},
+        {path: '/',component: select},
+        {path: '/main',component: main},
         {path: '/question',component: question},
         {path: '/practicequestion',component: practicequestion},
         {path: '/questionintro',component: questionintro},

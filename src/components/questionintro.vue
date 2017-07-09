@@ -1,7 +1,7 @@
 <template>
 <div >
     <div class="container text-center">
-            <h1>    Hello</h1>
+            <h1>Every Correct Answer is 2 points, incorrect is -1 points. </h1>
             <form class="form-inline">
                 <div class="form-group">
                     <label>Name:</label>

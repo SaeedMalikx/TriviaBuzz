@@ -36,8 +36,15 @@ export default new Vuex.Store({
         .then(response =>{
             state.practicequestion = response.data
         })},
-        gettimeattack (state){
-            axios.get("https://opentdb.com/api.php?amount=" + state.buzzamount +"&type=multiple")
+        getbuzz20 (state){
+            state.buzzamount = 20
+            axios.get("https://opentdb.com/api.php?amount=20&type=multiple")
+        .then(response =>{
+            state.timedquestion = response.data
+        })},
+        getbuzz30 (state){
+            state.buzzamount = 30
+            axios.get("https://opentdb.com/api.php?amount=30&type=multiple")
         .then(response =>{
             state.timedquestion = response.data
         })},
@@ -99,9 +106,6 @@ export default new Vuex.Store({
         },
         resetcq(state){
             state.cqnumber = 0
-        },
-        setbuzzamount(state, buzz){
-            state.buzzamount = buzz
         },
         resetscore(state){
             state.score = 0

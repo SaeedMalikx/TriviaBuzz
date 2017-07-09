@@ -1,15 +1,6 @@
 <template>
 <div >
     <div class="container text-center">
-            <router-link to="/questionintro"><button @click="gettimequestion()" class="btn-danger btn-lg">Start BuzzRound</button></router-link>
-            <br/>
-            <br/>
-            <select v-model="buzz" class="form-control">
-                <option disabled value="">Please select # of Questions</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-            </select>
-            <br/>
             <h1>Category</h1>
             <select v-model="cat" class="form-control">
                 <option disabled value="">Please select Category</option>
@@ -54,7 +45,6 @@ export default {
     return {
         cat: "",
         diff: "",
-        buzz: ""
     }
   },
   computed: {
@@ -63,9 +53,6 @@ export default {
       },
   },
   methods: {
-      gettimequestion(){
-        this.$store.commit('gettimeattack')
-      },
       getquestion(){
         this.$store.commit('getquestion')
       },
@@ -74,9 +61,6 @@ export default {
       },
       changediff(){
         this.$store.commit('changediff', this.diff)
-      },
-      setbuzzamount(){
-          this.$store.commit('setbuzzamount', this.buzz)
       }
   },
   watch: {
@@ -85,9 +69,6 @@ export default {
       },
       diff(){
           this.changediff()
-      },
-      buzz(){
-          this.setbuzzamount()
       }
   }
 }
