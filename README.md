@@ -1,6 +1,6 @@
-# vuetrivia
+# TriviaBuzz
 
-> A Vue.js project
+ [Live Demo](https://project1-todo-list.firebaseapp.com/)
 
 ## Build Setup
 
